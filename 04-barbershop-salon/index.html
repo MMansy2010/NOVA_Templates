@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ذا جنتلمان | صالون ونادي العناية بالرجل الفاخر</title>
+  <meta name="description" content="تجربة حلاقة وعناية ملكية للرجل العصري: قص وتصفيف شعر، حلاقة بالفوطة الساخنة، تنظيف بشرة هيدرافيشال، وباقات عريس متكاملة.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- هيدر الصالون -->
+  <header class="barber-header">
+    <div class="container header-row">
+      <a href="#home" class="barber-logo">
+        <div class="logo-icon"><i class="fa-solid fa-scissors"></i></div>
+        <div class="logo-text">
+          <h1 class="js-barber-name">ذا جنتلمان</h1>
+          <span>GROOMING CLUB & BARBERSHOP</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#services">الخدمات والأسعار</a></li>
+        <li><a href="#team">فريق المصففين</a></li>
+        <li><a href="#location">الموقع ومواعيد العمل</a></li>
+      </ul>
+
+      <button class="btn-gold" onclick="openBookingModalWithService()">
+        <i class="fa-solid fa-calendar-check"></i> احجز موعدك الآن
+      </button>
+    </div>
+  </header>
+
+  <!-- هيرو الصالون -->
+  <section class="barber-hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">
+          <i class="fa-solid fa-crown"></i>
+          <span>حلاقة كلاسيكية فاخرة وعناية متكاملة 💈</span>
+        </div>
+        <h2 class="hero-title">
+          أناقة المظهر الكلاسيكي <br>
+          <span>بلمسة عصرية لا تضاهى</span>
+        </h2>
+        <p class="hero-desc">
+          لسنا مجرد صالون حلاقة، بل مساحة استرخاء مصممة للرجل الذي يقدر التفاصيل. استمتع بحلاقة اللحية بالفوطة الساخنة، تنظيف البشرة العميق، وأحدث صيحات قص الشعر.
+        </p>
+
+        <div style="display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
+          <a href="#services" class="btn-gold" style="padding: 12px 28px; font-size: 1.05rem;">
+            <i class="fa-solid fa-list-check"></i> استعراض قائمة الخدمات
+          </a>
+          <button class="btn-gold" onclick="openBookingModalWithService('باقة العريس المتكاملة')" style="background: rgba(212, 175, 55, 0.15); border: 1px solid var(--border-gold); color: var(--gold-accent);">
+            <i class="fa-solid fa-gem"></i> حجز باقة العريس VIP
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 25px; border-top: 1px solid var(--border-subtle); padding-top: 20px;">
+          <div><strong style="color: var(--gold-accent); font-size: 1.4rem;">4.96 ⭐</strong><p style="color: var(--text-muted); font-size: 0.85rem;">+1,200 عميل دائم</p></div>
+          <div><strong style="color: var(--gold-accent); font-size: 1.4rem;">100%</strong><p style="color: var(--text-muted); font-size: 0.85rem;">أدوات معقمة طبياً</p></div>
+          <div><strong style="color: var(--gold-accent); font-size: 1.4rem;">VIP</strong><p style="color: var(--text-muted); font-size: 0.85rem;">ضيافة ومشروبات مجانية</p></div>
+        </div>
+      </div>
+
+      <div class="hero-img-box">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=80" alt="Barbershop Experience">
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الخدمات والأسعار -->
+  <section class="services-sec" id="services">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-sub">قائمة العناية والأسعار</span>
+        <h2 class="sec-title">اختر الخدمة المناسبة لإطلالتك</h2>
+      </div>
+
+      <div class="services-grid" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <!-- قسم فريق العمل والمصففين -->
+  <section class="team-sec" id="team">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-sub">المحترفون</span>
+        <h2 class="sec-title">فريق كبار مصففي الشعر</h2>
+      </div>
+
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </section>
+
+  <!-- الموقع وساعات العمل -->
+  <section class="container" id="location" style="padding: 70px 20px;">
+    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 24px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+      <div>
+        <span class="sec-sub">الموقع والزيارة</span>
+        <h3 style="font-size: 2rem; color: #fff; margin: 10px 0 20px;">تفضل بزيارة الصالون</h3>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
+          موقعنا في قلب مصر الجديدة، مجهز بأحدث كراسي الحلاقة الإيطالية وأجهزة تعقيم الأشعة فوق البنفسجية لتوفير أعلى معايير النظافة والراحة.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; gap: 10px; align-items: center; color: var(--gold-accent);">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="js-barber-address" style="color: #fff;">ميدان الكوربة، مصر الجديدة، القاهرة</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center; color: var(--gold-accent);">
+            <i class="fa-solid fa-clock"></i>
+            <span class="js-barber-hours" style="color: #fff;">يومياً من 11:00 ص حتى 11:00 م</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-radius: 18px; overflow: hidden; height: 300px;">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110500.0!2d31.32!3d30.09!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145815dcc3e4e599%3A0x6c67a22e4d9160ae!2sHeliopolis%2C%20Cairo!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg" 
+          width="100%" height="100%" style="border:0; filter: grayscale(90%) invert(90%);" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer class="barber-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <h3 style="color: #fff; font-size: 1.2rem;" class="js-barber-name">ذا جنتلمان لونج</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">صالون ونادي العناية بالرجل العصري.</p>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        قالب صالونات ومراكز عناية جاهز للتخصيص من <strong>NOVA Digital</strong>
+      </div>
+    </div>
+  </footer>
+
+  <!-- مودال حجز موعد -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeBookingModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 6px;">حجز موعد في الصالون</h3>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">اختر الخدمة والمصفف المفضل وسيتم إرسال حجزك مباشرة للاستقبال لتأكيد الموعد عبر واتساب.</p>
+
+      <form onsubmit="submitBooking(event)">
+        <div class="form-group">
+          <label>الخدمة المطلوبة</label>
+          <select id="bookService">
+            <option value="قصة شعر ملكية مخصصة">قصة شعر ملكية مخصصة (180 ج.م)</option>
+            <option value="طقوس حلاقة اللحية بالفوطة الساخنة">حلاقة اللحية بالفوطة الساخنة (120 ج.م)</option>
+            <option value="جلسة هيدرافيشال لتنظيف البشرة">جلسة تنظيف بشرة هيدرافيشال (320 ج.م)</option>
+            <option value="جلسة علاج البروتين أو الكيراتين">جلسة علاج البروتين والكيراتين (450 ج.م)</option>
+            <option value="باقة العريس المتكاملة">باقة العريس VIP المتكاملة (950 ج.م)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>المصفف المفضل</label>
+          <select id="bookBarber">
+            <option value="أي مصفف متاح">أي مصفف محترف متاح في الموعد</option>
+            <option value="كابتن زياد فؤاد">كابتن زياد فؤاد (مدير الصالون)</option>
+            <option value="أندريه سمير">أندريه سمير (أخصائي اللحية والبشرة)</option>
+            <option value="عمر خيري">عمر خيري (قصات تريند وفيدنج)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>الاسم بالكامل</label>
+          <input type="text" id="clientName" required placeholder="محمد أحمد">
+        </div>
+        <div class="form-group">
+          <label>اليوم والوقت المناسب</label>
+          <input type="text" id="bookDateTime" required placeholder="غداً في تمام 6:00 مساءً">
+        </div>
+        <button type="submit" class="btn-gold" style="width: 100%; justify-content: center; padding: 12px; margin-top: 10px;">
+          <i class="fa-brands fa-whatsapp"></i> إرسال تأكيد الموعد لواتساب الصالون
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

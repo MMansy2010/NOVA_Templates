@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أيرون بالس جيم | صالة لياقة وبناء أجسام متطورة</title>
+  <meta name="description" content="أحدث صالة رياضية متكاملة 24/7، مدربين معتمدين دولياً، برامج تضخيم وحرق دهون، وقياس InBody مجاني مع تجربة يوم مجانية.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- هيدر الجيم -->
+  <header class="gym-header">
+    <div class="container header-row">
+      <a href="#home" class="gym-logo">
+        <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="logo-text">
+          <h1 class="js-gym-name">أيرون بالس</h1>
+          <span>FITNESS & PERFORMANCE CLUB</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#programs">البرامج التدريبية</a></li>
+        <li><a href="#pricing">باقات الاشتراكات</a></li>
+        <li><a href="#coaches">المدربين</a></li>
+        <li><a href="#faq">الأسئلة الشائعة</a></li>
+      </ul>
+
+      <a href="#trial" class="btn-neon">
+        <i class="fa-solid fa-ticket"></i> احصل على يوم تجربة مجاني
+      </a>
+    </div>
+  </header>
+
+  <!-- هيرو الجيم -->
+  <section class="gym-hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">
+          <i class="fa-solid fa-fire"></i>
+          <span>مفتوح 24 ساعة يومياً بدون توقف ⚡</span>
+        </div>
+        <h2 class="hero-title">
+          ابنِ نسختك الأقوى <br>
+          <span>بأحدث تقنيات اللياقة العالمية</span>
+        </h2>
+        <p class="hero-desc">
+          صالة رياضية بمساحة 1,500 متر مربع مجهزة بأحدث أجهزة Hammer Strength وTechnogym، مع بيئة حماسية وبرامج غذائية وتدريبية مخصصة للوصول لأهدافك بأسرع وقت.
+        </p>
+
+        <div style="display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
+          <a href="#pricing" class="btn-neon" style="padding: 12px 28px; font-size: 1.05rem;">
+            <i class="fa-solid fa-tag"></i> أسعار الاشتراكات
+          </a>
+          <a href="#trial" class="btn-neon" style="background: rgba(16, 185, 129, 0.15); border: 1px solid var(--border-neon); color: var(--neon-lime);">
+            <i class="fa-solid fa-dumbbell"></i> تجربة مجانية الآن
+          </a>
+        </div>
+
+        <div style="display: flex; gap: 25px; border-top: 1px solid var(--border-subtle); padding-top: 20px;">
+          <div><strong style="color: var(--neon-lime); font-size: 1.4rem;">+2,800</strong><p style="color: var(--text-muted); font-size: 0.85rem;">مشترك نشط</p></div>
+          <div><strong style="color: var(--neon-lime); font-size: 1.4rem;">24/7</strong><p style="color: var(--text-muted); font-size: 0.85rem;">مفتوح على مدار الساعة</p></div>
+          <div><strong style="color: var(--neon-lime); font-size: 1.4rem;">15+</strong><p style="color: var(--text-muted); font-size: 0.85rem;">مدرب معتمد دولياً</p></div>
+        </div>
+      </div>
+
+      <div class="hero-img-box">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80" alt="IronPulse Gym">
+      </div>
+    </div>
+  </section>
+
+  <!-- صندوق طلب يوم تجربة مجاني لتحويل الزوار لعملاء (Lead Gen) -->
+  <div class="container" id="trial">
+    <div class="trial-lead-box">
+      <div>
+        <span class="sec-sub">فرصة حصرية لزوار الموقع</span>
+        <h3>جرب الجيم يوماً كاملاً مجاناً 100%!</h3>
+        <p>املأ بياناتك وسنرسل لك تصريح الدخول المجاني شاملاً فحص InBody واستشارة تدريبية مع أحد كباتن النادي فوراً عبر واتساب.</p>
+      </div>
+      <form onsubmit="claimFreeTrial(event)" style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="text" id="trialName" required placeholder="الاسم الكريم" style="background: rgba(15,23,42,0.8); border: 1px solid var(--border-subtle); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit;">
+        <input type="tel" id="trialPhone" required placeholder="رقم الموبايل / واتساب" style="background: rgba(15,23,42,0.8); border: 1px solid var(--border-subtle); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit;">
+        <select id="trialGoal" style="background: rgba(15,23,42,0.8); border: 1px solid var(--border-subtle); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit;">
+          <option value="بناء عضلات وتضخيم">بناء عضلات وزيادة وزن</option>
+          <option value="تخسيس وحرق دهون">تخسيس وحرق دهون</option>
+          <option value="لياقة عامة وكروس فيت">لياقة عامة ونشاط يومي</option>
+        </select>
+        <button type="submit" class="btn-neon" style="width: 100%; justify-content: center; padding: 14px;">
+          <i class="fa-brands fa-whatsapp"></i> تفعيل تصريح التجربة المجاني
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- البرامج التدريبية -->
+  <section class="programs-sec" id="programs">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-sub">المسارات الرياضية</span>
+        <h2 class="sec-title">برامج مصممة لكل مستوى</h2>
+      </div>
+
+      <div class="programs-grid" id="programsGrid"></div>
+    </div>
+  </section>
+
+  <!-- باقات الاشتراكات -->
+  <section class="pricing-sec" id="pricing">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-sub">عضويات مرنة</span>
+        <h2 class="sec-title">اختر باقة الاشتراك الأنسب لك</h2>
+      </div>
+
+      <div class="pricing-grid" id="pricingGrid"></div>
+    </div>
+  </section>
+
+  <!-- المدربين -->
+  <section class="container" id="coaches" style="padding: 60px 20px;">
+    <div class="sec-head">
+      <span class="sec-sub">كادر التدريب</span>
+      <h2 class="sec-title">أبطال يوجهونك خطوة بخطوة</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" id="coachesGrid"></div>
+  </section>
+
+  <!-- الأسئلة الشائعة -->
+  <section class="faq-sec" id="faq">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-sub">استفسارات شائعة</span>
+        <h2 class="sec-title">كل ما تريد معرفته عن النادي</h2>
+      </div>
+
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer class="gym-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <h3 style="color: #fff; font-size: 1.2rem;" class="js-gym-name">أيرون بالس جيم</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">بيئة تدريب احترافية تدفعك للأمام كل يوم.</p>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        قالب مراكز اللياقة والأندية الرياضية من <strong>NOVA Digital</strong>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

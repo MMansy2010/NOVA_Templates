@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فيرانزا جريل آند بيسترو | مطعم إيطالي ومشويات فاخرة</title>
+  <meta name="description" content="أرقى تجربة طعام متوسطية تجمع بين باستا الكمأة الإيطالية الطازجة وستيك بلاك أنجوس ومشويات الحطب.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>🍷</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- هيدر المطعم -->
+  <header class="rest-header">
+    <div class="container header-row">
+      <a href="#home" class="rest-logo">
+        <div class="logo-icon"><i class="fa-solid fa-utensils"></i></div>
+        <div class="rest-logo-text">
+          <h1>فيرانزا جريل</h1>
+          <span>VERANZA DINING & BISTRO</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#menu">قائمة الطعام</a></li>
+        <li><a href="#branches">فروعنا</a></li>
+        <li><a href="#delivery">تطبيقات التوصيل</a></li>
+      </ul>
+
+      <button class="btn-crimson" onclick="openTableModal()">
+        <i class="fa-solid fa-champagne-glasses"></i> حجز طاولة
+      </button>
+    </div>
+  </header>
+
+  <!-- هيرو المطعم -->
+  <section class="rest-hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">
+          <i class="fa-solid fa-fire"></i>
+          <span>طهي على نار الحطب الطبيعي وأجود اللحوم المعتمدة</span>
+        </div>
+        <h2 class="hero-title">
+          سيمفونية من المذاق <br>
+          <span>الإيطالي والشرقي الفاخر</span>
+        </h2>
+        <p class="hero-desc">
+          نأخذكم في رحلة طهي متكاملة مع شرائح ستيك بلاك أنجوس المعتقة، والباستا الإيطالية المصنوعة يدوياً مع نفحات زيت الزيتون البكر وأعشاب البحر الأبيض المتوسط.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#menu" class="btn-crimson" style="padding: 12px 28px; font-size: 1.05rem;">
+            <i class="fa-solid fa-book-open"></i> استكشف المنيو
+          </a>
+          <button class="btn-crimson" onclick="openTableModal()" style="background: rgba(251, 191, 36, 0.15); border: 1px solid var(--border-gold); color: var(--gold-accent);">
+            <i class="fa-regular fa-calendar"></i> حجز عشاء أو مناسبة
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 25px; border-top: 1px solid var(--border-subtle); padding-top: 20px;">
+          <div><strong style="color: var(--gold-accent); font-size: 1.4rem;">4.9 ⭐</strong><p style="color: var(--text-muted); font-size: 0.85rem;">+2,100 تقييم زوار</p></div>
+          <div><strong style="color: var(--gold-accent); font-size: 1.4rem;">3 فروع</strong><p style="color: var(--text-muted); font-size: 0.85rem;">القاهرة والشيخ زايد</p></div>
+          <div><strong style="color: var(--gold-accent); font-size: 1.4rem;">100%</strong><p style="color: var(--text-muted); font-size: 0.85rem;">لحوم طازجة يومياً</p></div>
+        </div>
+      </div>
+
+      <div class="hero-img-box">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80" alt="Veranza Steak Grill">
+      </div>
+    </div>
+  </section>
+
+  <!-- شريط تطبيقات التوصيل -->
+  <div class="delivery-bar" id="delivery">
+    <div class="container">
+      <div class="delivery-partners-list" id="deliveryPartners"></div>
+    </div>
+  </div>
+
+  <!-- قائمة الطعام -->
+  <section class="menu-sec" id="menu">
+    <div class="container">
+      <div class="sec-title-wrap">
+        <span class="sec-sub">أطباق صنعت بشغف</span>
+        <h2 class="sec-h2">قائمة الطعام والمشويات</h2>
+      </div>
+
+      <div class="cat-tabs" id="catTabs"></div>
+      <div class="dishes-grid" id="dishesGrid"></div>
+    </div>
+  </section>
+
+  <!-- الفروع -->
+  <section class="branches-sec" id="branches">
+    <div class="container">
+      <div class="sec-title-wrap">
+        <span class="sec-sub">مواقعنا في خدمتكم</span>
+        <h2 class="sec-h2">فروع فيرانزا وساعات العمل</h2>
+      </div>
+
+      <div class="branches-grid" id="branchesGrid"></div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer class="rest-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 20px;">
+      <div>
+        <h3 style="color: #fff; font-size: 1.2rem;">فيرانزا جريل آند بيسترو</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">كرم الضيافة وأشهى أطباق الشيف يومياً.</p>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        قالب مطاعم جاهز للتخصيص الفوري من تطوير <strong>NOVA Digital</strong>
+      </div>
+    </div>
+  </footer>
+
+  <!-- مودال حجز طاولة -->
+  <div class="modal-overlay" id="tableModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeTableModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 6px;">حجز طاولة في المطعم</h3>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">اختر الفرع والموعد وسيتواصل معك مدير الصالة لتأكيد طاولتك عبر واتساب.</p>
+
+      <form onsubmit="submitTableBooking(event)">
+        <div class="form-field">
+          <label>الفرع المفضل</label>
+          <select id="bookingBranch">
+            <option value="فرع التجمع الخامس">فرع التجمع الخامس (شارع التسعين)</option>
+            <option value="فرع الشيخ زايد">فرع الشيخ زايد (كابيتال بيزنس بارك)</option>
+            <option value="فرع المعادي">فرع المعادي (دجلة)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>الاسم بالكامل</label>
+          <input type="text" id="guestName" required placeholder="محمد عبد الله">
+        </div>
+        <div class="form-field">
+          <label>عدد الضيوف</label>
+          <select id="guestCount">
+            <option value="شخصين (طاولة ثنائية)">شخصين</option>
+            <option value="3-4 أشخاص عائلة">3-4 أشخاص</option>
+            <option value="5-8 أشخاص">5-8 أشخاص</option>
+            <option value="+10 أشخاص مناسبة خاصة">+10 أشخاص (مناسبة خاصة)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>تاريخ وموعد الوصول</label>
+          <input type="text" id="bookingTime" required placeholder="غداً 8:00 مساءً">
+        </div>
+        <div class="form-field">
+          <label>منطقة الجلوس</label>
+          <select id="seatingArea">
+            <option value="الصالة الداخلية الفاخرة">الصالة الداخلية الفاخرة</option>
+            <option value="التراس الخارجي المفتوح">التراس الخارجي المفتوح</option>
+            <option value="ركن هادئ للعائلات">ركن هادئ للعائلات</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-crimson" style="width: 100%; justify-content: center; padding: 12px; margin-top: 10px;">
+          <i class="fa-brands fa-whatsapp"></i> إرسال طلب الحجز للفرع
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

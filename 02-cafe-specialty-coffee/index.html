@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>برو آند بين | كافيه ومحمصة قهوة مختصة</title>
+  <meta name="description" content="تجربة قهوة مختصة استثنائية من محاصيل فردية المصدر V60، كولد برو، وإسبريسو مع أجواء هادئة للعمل والمذاكرة.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- هيدر الكافيه -->
+  <header class="cafe-header">
+    <div class="container header-inner">
+      <a href="#home" class="cafe-logo">
+        <div class="logo-badge"><i class="fa-solid fa-mug-hot"></i></div>
+        <div class="cafe-logo-text">
+          <h1 class="js-cafe-name">برو آند بين</h1>
+          <span>SPECIALTY COFFEE & ROASTERY</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#menu">منيو القهوة</a></li>
+        <li><a href="#ambiance">أجواء المكان</a></li>
+        <li><a href="#location">الموقع وساعات العمل</a></li>
+      </ul>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-cafe-primary" onclick="openReserveModal()">
+          <i class="fa-solid fa-calendar-check"></i> احجز طاولتك
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- هيرو الكافيه -->
+  <section class="cafe-hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge-pill">
+          <i class="fa-solid fa-fire"></i>
+          <span>محاصيل بن موسمية محمصة طازجة ☕</span>
+        </div>
+        <h2 class="hero-heading">
+          نصنع فنجانك بحرفية <br>
+          <span>توقظ حواسك وشغفك</span>
+        </h2>
+        <p class="hero-text">
+          نستورد حبوب البن الخضراء من مزارع إثيوبيا وكولومبيا الشاهقة، ونحمصها بجرعات دقيقة لتبرز نوتات الفواكه والشوكولاتة النقية في كل قطرة تقطير أو إسبريسو.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#menu" class="btn-cafe-primary" style="padding: 12px 26px;">
+            <i class="fa-solid fa-layer-group"></i> استكشف المشروبات
+          </a>
+          <button class="btn-cafe-outline" onclick="openReserveModal()" style="cursor: pointer;">
+            <i class="fa-regular fa-clock"></i> حجز جلسة عمل
+          </button>
+        </div>
+
+        <div class="hero-highlights">
+          <div class="hl-box">
+            <h4>+8</h4>
+            <p>محاصيل فردية المصدر</p>
+          </div>
+          <div class="hl-box">
+            <h4>20 ساعة</h4>
+            <p>تنقيع بطيء للكولد برو</p>
+          </div>
+          <div class="hl-box">
+            <h4>100 Mbps</h4>
+            <p>واي فاي فايبر للعمل</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-frame">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" alt="Specialty Coffee Barista">
+        <div class="floating-coffee-note">
+          <i class="fa-solid fa-seedling" style="color: var(--amber-primary); font-size: 1.8rem;"></i>
+          <div>
+            <strong style="color: #fff; font-size: 0.95rem; display: block;">تحميص يدوي محلي</strong>
+            <span style="color: var(--amber-primary); font-size: 0.8rem;">بإشراف باريستا معتمد من جمعية القهوة المختصة (SCA)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- منيو المشروبات -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-head">
+        <span class="sec-subtitle">قائمة المشروبات والمحاصيل</span>
+        <h2 class="sec-title">اختر مذاقك المفضل اليوم</h2>
+      </div>
+
+      <div class="category-bar" id="categoryBar"></div>
+      <div class="drinks-grid" id="drinksGrid"></div>
+    </div>
+  </section>
+
+  <!-- أجواء المكان وبيئة العمل (Ambiance) -->
+  <section class="ambiance-section" id="ambiance">
+    <div class="container">
+      <div class="section-head">
+        <span class="sec-subtitle">المساحة والأجواء</span>
+        <h2 class="sec-title">مكان صُمم لتنجز وتستمتع بوقتك</h2>
+      </div>
+      <div class="ambiance-grid" id="ambianceGrid"></div>
+    </div>
+  </section>
+
+  <!-- الموقع وساعات العمل -->
+  <section class="container" id="location" style="padding: 70px 20px;">
+    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 24px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+      <div>
+        <span class="sec-subtitle">الموقع والزيارة</span>
+        <h3 style="font-size: 2rem; color: #fff; margin: 10px 0 20px;">ننتظر لقاءكم في فرعنا</h3>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
+          سواء كنت تبحث عن فنجان صباحي منعش لبدء يومك، أو ركن هادئ لإنهاء مشروعك على اللابتوب، مكاننا جاهز دائماً لاستقبالك.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem;">
+          <div style="display: flex; gap: 10px; align-items: center; color: var(--amber-primary);">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="js-cafe-address" style="color: #fff;">الممشى السياحي، التجمع الخامس</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center; color: var(--amber-primary);">
+            <i class="fa-solid fa-clock"></i>
+            <span class="js-cafe-hours" style="color: #fff;">يومياً من 6:30 ص حتى 1:00 ص</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-radius: 18px; overflow: hidden; height: 300px;">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110543.91494677983!2d31.4286548!3d30.0163353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d09a25b1cb3%3A0x6b149c40213895e6!2sNew%20Cairo%201%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg" 
+          width="100%" 
+          height="100%" 
+          style="border:0; filter: grayscale(90%) invert(90%);" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- فوتر الكافيه -->
+  <footer class="cafe-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <h3 style="color: #fff; font-size: 1.3rem;" class="js-cafe-name">برو آند بين</h3>
+          <p style="color: var(--text-dim); font-size: 0.88rem; margin-top: 4px;">وجهتك اليومية لأصالة البن وسحر المذاق.</p>
+        </div>
+        <div style="display: flex; gap: 15px; color: var(--amber-primary); font-size: 1.2rem;">
+          <a href="#" style="color: inherit;"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" style="color: inherit;"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <span>جميع الحقوق محفوظة &copy; 2026</span>
+        <span>قالب معتمد لقطاع الكافيهات من تطوير <strong>NOVA Digital</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- مودال حجز طاولة -->
+  <div class="modal-overlay" id="reserveModal">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="closeReserveModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 6px;">حجز طاولة أو جلسة عمل</h3>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">سنرسل تفاصيل حجزك للباريستا مباشرة عبر واتساب لتأكيد مكانك فوراً.</p>
+      
+      <form onsubmit="submitReservation(event)">
+        <div class="form-group">
+          <label>الاسم الكريم</label>
+          <input type="text" id="resName" required placeholder="مثال: محمد علي">
+        </div>
+        <div class="form-group">
+          <label>عدد الأفراد</label>
+          <select id="resCount">
+            <option value="فرد واحد (مذاكرة وعمل)">فرد واحد (مذاكرة وعمل هادئ)</option>
+            <option value="2 أفراد">فردين</option>
+            <option value="3-5 أفراد">مجموعة صغيرة (3-5 أفراد)</option>
+            <option value="+6 أفراد">اجتماع عمل (+6 أفراد)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>الوقت المتوقع للوصول</label>
+          <input type="text" id="resTime" required placeholder="مثال: اليوم 5 مساءً">
+        </div>
+        <div class="form-group">
+          <label>ملاحظات (اختياري)</label>
+          <input type="text" id="resNote" placeholder="رغبة في مقبس كهرباء بجوار النافذة...">
+        </div>
+        <button type="submit" class="btn-cafe-primary" style="width: 100%; justify-content: center; padding: 12px;">
+          <i class="fa-brands fa-whatsapp"></i> تأكيد الحجز الآن
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
