@@ -14,8 +14,8 @@ const BAKERY_CONFIG = {
     reviewsCount: "1,450+"
   },
   contact: {
-    whatsapp: "201000000000", // رقم الواتساب بدون علامة +
-    phone: "+20 100 000 0000",
+    whatsapp: "201146945584", // رقم الواتساب الرسمي للاستقبال والتجربة
+    phone: "+20 114 694 5584",
     email: "bonjour@ledore-bakery.com",
     addressAr: "شارع النزهة، مصر الجديدة، القاهرة (بجوار كافيه دي باريس)",
     addressEn: "El Nozha St, Heliopolis, Cairo",

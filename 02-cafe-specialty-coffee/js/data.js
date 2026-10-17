@@ -11,8 +11,8 @@ const CAFE_CONFIG = {
     reviewsCount: "980+"
   },
   contact: {
-    whatsapp: "201000000000",
-    phone: "+20 100 000 0000",
+    whatsapp: "201146945584",
+    phone: "+20 114 694 5584",
     addressAr: "الممشى السياحي، التجمع الخامس، القاهرة الجديدة",
     addressEn: "The Promenade, New Cairo",
     workingHoursAr: "يومياً من 6:30 ص حتى 1:00 بعد منتصف الليل",

@@ -10,8 +10,8 @@ const RESTAURANT_CONFIG = {
     reviewsCount: "2,100+"
   },
   contact: {
-    whatsapp: "201000000000",
-    phone: "+20 100 000 0000",
+    whatsapp: "201146945584",
+    phone: "+20 114 694 5584",
     currency: "ج.م"
   },
   branches: [

@@ -10,8 +10,8 @@ const BARBER_CONFIG = {
     reviewsCount: "1,200+"
   },
   contact: {
-    whatsapp: "201000000000",
-    phone: "+20 100 000 0000",
+    whatsapp: "201146945584",
+    phone: "+20 114 694 5584",
     addressAr: "ميدان الكوربة، مصر الجديدة، القاهرة",
     workingHoursAr: "يومياً من 11:00 صباحاً حتى 11:00 مساءً (الجمعة من 1:00 ظهراً)",
     currency: "ج.م"

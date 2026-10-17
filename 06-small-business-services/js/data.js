@@ -11,8 +11,8 @@ const BIZ_CONFIG = {
     corporateClients: "120+"
   },
   contact: {
-    whatsapp: "201000000000",
-    phone: "+20 100 000 0000",
+    whatsapp: "201146945584",
+    phone: "+20 114 694 5584",
     email: "contact@apexsolutions.com",
     addressAr: "مبنى كابيتال برايم، الحي المالي، العاصمة الإدارية الجديدة",
     workingHoursAr: "من الأحد إلى الخميس: 9:00 ص - 6:00 م"
