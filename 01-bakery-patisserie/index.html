@@ -74,8 +74,23 @@
     </div>
   </header>
 
-  <!-- القسم الرئيسي (Hero Section) مع مسرح 3D تفاعلي حقيقي -->
+  <!-- القسم الرئيسي (Hero Section) مع مسرح 3D تفاعلي وخلفية حية متفاعلة مع الماوس -->
   <section class="hero-editorial" id="home">
+    <!-- كانفاس تفاعلي لجزيئات ذرات الدقيق والشرارات الذهبية الحية -->
+    <canvas id="heroBackgroundCanvas" class="hero-bg-interactive-canvas"></canvas>
+    
+    <!-- هالة ضوئية دافئة تتبع حركة الماوس بسلاسة -->
+    <div class="ambient-cursor-glow" id="ambientCursorGlow"></div>
+
+    <!-- عناصر ديكورية عائمة في الخلفية بعمق Parallax متدرج -->
+    <div class="hero-bg-floating-elements" id="heroBgFloatingElements" aria-hidden="true">
+      <span class="bg-float-item item-1" data-depth="0.08">🌾</span>
+      <span class="bg-float-item item-2" data-depth="0.14">✨</span>
+      <span class="bg-float-item item-3" data-depth="0.05">🥖</span>
+      <span class="bg-float-item item-4" data-depth="0.12">🥐</span>
+      <span class="bg-float-item item-5" data-depth="0.07">🧈</span>
+    </div>
+
     <div class="container hero-editorial-grid">
       <div class="hero-text-side">
         <span class="hero-handwritten-tag">نخبز بشغف منذ فجر اليوم 🥐</span>

@@ -14,6 +14,7 @@ const StoreState = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  initHeroInteractiveBackground();
   initHeroParallaxStage();
   renderProducts();
   renderFilters();
@@ -24,7 +25,266 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================================================
-// 1. REALISTIC 3D PARALLAX SHOWCASE CONTROLLER
+// 1. BESPOKE INTERACTIVE BACKGROUND ENGINE (Flour & Golden Dust Particles)
+// ==========================================================================
+function initHeroInteractiveBackground() {
+  const heroSection = document.getElementById('home');
+  const canvas = document.getElementById('heroBackgroundCanvas');
+  const ambientGlow = document.getElementById('ambientCursorGlow');
+  const floatingItems = document.querySelectorAll('.bg-float-item');
+
+  if (!heroSection || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width, height, dpr;
+  let animationId = null;
+  let isHeroVisible = true;
+
+  // إعدادات الماوس مع تنعيم حركة الهالة الضوئية
+  const mouse = {
+    x: -1000,
+    y: -1000,
+    targetX: -1000,
+    targetY: -1000,
+    glowX: -1000,
+    glowY: -1000,
+    radius: 140,
+    isInside: false,
+    prevX: 0,
+    prevY: 0,
+    speed: 0
+  };
+
+  // نظام الجزيئات (ذرات الدقيق وشرارات الذهب الدافئة)
+  const particles = [];
+  const PARTICLE_COUNT = 65;
+  const particleColors = [
+    'rgba(230, 183, 108, 0.75)',  // ذهبي براق
+    'rgba(245, 209, 153, 0.65)',  // شامبين دافئ
+    'rgba(252, 249, 242, 0.55)',  // أبيض عاجي نقي (دقيق فرنسي)
+    'rgba(229, 152, 56, 0.60)',   // عنبر دافئ
+    'rgba(180, 83, 9, 0.45)'      // نحاسي مخملي
+  ];
+
+  class Particle {
+    constructor() {
+      this.reset(true);
+    }
+
+    reset(initial = false) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * height : height + 10;
+      this.size = Math.random() * 2.5 + 0.8;
+      this.baseSize = this.size;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = -(Math.random() * 0.5 + 0.2); // طفو طبيعي للأعلى
+      this.alpha = Math.random() * 0.55 + 0.2;
+      this.baseAlpha = this.alpha;
+      this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
+      this.wobbleSpeed = Math.random() * 0.03 + 0.01;
+      this.wobbleAngle = Math.random() * Math.PI * 2;
+      this.wobbleRadius = Math.random() * 1.2 + 0.3;
+      this.life = 1;
+      this.isSpark = false;
+    }
+
+    update() {
+      this.wobbleAngle += this.wobbleSpeed;
+      this.x += this.vx + Math.cos(this.wobbleAngle) * this.wobbleRadius;
+      this.y += this.vy;
+
+      // تفاعل فيزيائي عند اقتراب الماوس من الجزيء
+      if (mouse.isInside) {
+        const dx = this.x - mouse.targetX;
+        const dy = this.y - mouse.targetY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < mouse.radius && dist > 0) {
+          const force = (1 - dist / mouse.radius);
+          const pushX = (dx / dist) * force * 4.5;
+          const pushY = (dy / dist) * force * 4.5;
+
+          this.x += pushX;
+          this.y += pushY;
+          this.alpha = Math.min(1, this.baseAlpha + force * 0.45);
+          this.size = this.baseSize + force * 1.5;
+        } else {
+          this.alpha += (this.baseAlpha - this.alpha) * 0.05;
+          this.size += (this.baseSize - this.size) * 0.05;
+        }
+      }
+
+      // إذا كانت شرارة مؤقتة من حركة الماوس السريعة
+      if (this.isSpark) {
+        this.life -= 0.025;
+        this.alpha = this.life * 0.8;
+        if (this.life <= 0) {
+          this.reset();
+        }
+        return;
+      }
+
+      // إعادة التدوير عند الخروج من أطراف الشاشة
+      if (this.y < -20 || this.x < -20 || this.x > width + 20) {
+        this.reset();
+      }
+    }
+
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, this.alpha);
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+
+      // هالة إضاءة دائرية للجزيئات الأكبر حجماً
+      if (this.size > 2) {
+        ctx.fillStyle = 'rgba(230, 183, 108, 0.15)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 2.4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+  }
+
+  // ضبط أبعاد الكانفاس بدقة الشاشة
+  function resizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = heroSection.clientWidth;
+    height = heroSection.clientHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    ctx.scale(dpr, dpr);
+
+    if (particles.length === 0) {
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+      }
+    }
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', debounce(resizeCanvas, 150));
+
+  // استشعار حركة الماوس فوق قسم الهيرو
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const curX = e.clientX - rect.left;
+    const curY = e.clientY - rect.top;
+
+    mouse.targetX = curX;
+    mouse.targetY = curY;
+    mouse.isInside = true;
+
+    // حساب سرعة الماوس لإطلاق ذرات ضوئية متطايرة عند الحركة السريعة
+    const distMoved = Math.hypot(curX - mouse.prevX, curY - mouse.prevY);
+    mouse.speed = distMoved;
+    mouse.prevX = curX;
+    mouse.prevY = curY;
+
+    if (distMoved > 25 && particles.length < PARTICLE_COUNT + 15) {
+      const spark = new Particle();
+      spark.x = curX + (Math.random() - 0.5) * 20;
+      spark.y = curY + (Math.random() - 0.5) * 20;
+      spark.vx = (Math.random() - 0.5) * 1.5;
+      spark.vy = (Math.random() - 0.5) * 1.5 - 0.5;
+      spark.color = '#f5d199';
+      spark.size = Math.random() * 2 + 1;
+      spark.isSpark = true;
+      spark.life = 1;
+      particles.push(spark);
+    }
+
+    // Parallax خفيف على الأيقونات العائمة في الخلفية
+    const centerRelX = (curX - rect.width / 2) / (rect.width / 2);
+    const centerRelY = (curY - rect.height / 2) / (rect.height / 2);
+
+    floatingItems.forEach((item) => {
+      const depth = parseFloat(item.getAttribute('data-depth')) || 0.1;
+      const moveX = centerRelX * depth * -45;
+      const moveY = centerRelY * depth * -35;
+      item.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+
+    if (ambientGlow) {
+      ambientGlow.style.opacity = '1';
+    }
+  });
+
+  heroSection.addEventListener('mouseleave', () => {
+    mouse.isInside = false;
+    mouse.targetX = -1000;
+    mouse.targetY = -1000;
+
+    if (ambientGlow) {
+      ambientGlow.style.opacity = '0';
+    }
+
+    floatingItems.forEach((item) => {
+      item.style.transform = `translate3d(0, 0, 0)`;
+    });
+  });
+
+  // حلقة الرسوم المتحركة (60 FPS مع حماية الذاكرة)
+  function animate() {
+    if (!isHeroVisible) {
+      animationId = requestAnimationFrame(animate);
+      return;
+    }
+
+    ctx.clearRect(0, 0, width, height);
+
+    // تنعيم حركة الهالة الضوئية خلف الماوس (Lerp)
+    if (ambientGlow && mouse.isInside) {
+      mouse.glowX += (mouse.targetX - mouse.glowX) * 0.12;
+      mouse.glowY += (mouse.targetY - mouse.glowY) * 0.12;
+      ambientGlow.style.left = `${mouse.glowX}px`;
+      ambientGlow.style.top = `${mouse.glowY}px`;
+    }
+
+    // تحديث ورسم جزيئات الغبار والذهب
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.update();
+      p.draw();
+
+      if (p.isSpark && p.life <= 0) {
+        particles.splice(i, 1);
+      }
+    }
+
+    animationId = requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // إيقاف المعالجة عند النزول لأسفل الصفحة للحفاظ على أفضل أداء وسلاسة
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      isHeroVisible = entry.isIntersecting;
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(heroSection);
+}
+
+// دالة تأخير لمعالجة الأحداث المتكررة
+function debounce(fn, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(this, args), wait);
+  };
+}
+
+// ==========================================================================
+// 2. REALISTIC 3D PARALLAX SHOWCASE CONTROLLER
 // ==========================================================================
 function initHeroParallaxStage() {
   const card = document.getElementById('parallaxCard');
