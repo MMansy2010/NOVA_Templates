@@ -3,452 +3,313 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لو دوريه باتيسري | مخبوزات وحلويات فرنسية فاخرة</title>
-  <meta name="description" content="مخبز وباتيسري حرفي يقدم أرقى أنواع الكرواسون، التورت الملكية، الخبز الحرفي، وبوكسات الجمعات مع إمكانية الطلب المباشر عبر واتساب والتوصيل السريع.">
+  <title>لو دوريه باتيسري | L'Artisan Bakery & Patisserie Parisienne</title>
+  <meta name="description" content="مخبوزات فرنسية أصيلة، كرواسون بالزبدة الطبيعية وتخمير بطيء 36 ساعة مع تجربة ثلاثية الأبعاد تفاعلية وسلة طلب مباشرة عبر واتساب.">
   
-  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
   
-  <!-- Google Fonts: Playfair Display + Cairo + Plus Jakarta Sans -->
+  <!-- خطوط عضوية وطباعية راقية (Playfair Display + Amiri + Cairo + Marhey) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Marhey:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
   
   <!-- FontAwesome 6 Free -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Template Stylesheet -->
+  <!-- Three.js CDN for Real 3D Interactive Canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Custom Artisanal Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- شريط العرض العلوي / التوصيل المجاني -->
-  <div class="top-announcement">
+  <!-- شريط الإعلان الحرفي العلوي -->
+  <div class="top-ribbon">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-      <div class="info-pill">
-        <i class="fa-solid fa-sparkles"></i>
-        <span>توصيل مجاني للطلبات الأكثر من <strong>450 ج.م</strong> لجميع أحياء القاهرة الجديدة ومصر الجديدة!</span>
+      <div class="stamp-pill">
+        <i class="fa-solid fa-wheat-awn"></i>
+        <span>دقيق فرنسي عضوي معتمد • تخمير بطيء 36 ساعة لهضم خفيف وطعم أصيل</span>
       </div>
-      <div class="info-pill" style="display: none; @media(min-width: 768px){display: flex;}">
+      <div class="stamp-pill" style="display: none; @media(min-width: 768px){display: flex;}">
         <i class="fa-solid fa-clock"></i>
-        <span class="js-contact-hours">يومياً من 7:00 ص حتى 11:30 م</span>
+        <span>الدفعة الأولى تخرج ساخنة يومياً في تمام 7:00 صباحاً</span>
       </div>
     </div>
   </div>
 
-  <!-- الهيدر وشريط التنقل الرئيسي -->
+  <!-- الهيدر والختم الشمعي الفاخر -->
   <header class="site-header">
     <div class="container nav-wrap">
-      <!-- الشعار -->
       <a href="#home" class="brand-logo">
-        <div class="logo-symbol">
-          <i class="fa-solid fa-wheat-awn"></i>
+        <div class="wax-seal">
+          <i class="fa-solid fa-croissant"></i>
         </div>
-        <div class="brand-text">
-          <h1 class="js-brand-name">لو دوريه باتيسري</h1>
-          <span>ARTISAN BAKERY & PATISSERIE</span>
+        <div class="brand-titles">
+          <h1>لو دوريه باتيسري</h1>
+          <span>L'ARTISAN BOUTIQUE • PARIS</span>
         </div>
       </a>
 
-      <!-- روابط القائمة -->
       <nav>
         <ul class="nav-links">
           <li><a href="#home" class="active">الرئيسية</a></li>
           <li><a href="#menu">قائمة المخبوزات</a></li>
-          <li><a href="#special">بوكسات المناسبات</a></li>
-          <li><a href="#features">لماذا نتميز؟</a></li>
-          <li><a href="#testimonials">آراء العملاء</a></li>
-          <li><a href="#location">الفروع ومواعيد العمل</a></li>
+          <li><a href="#boxBuilder">صمّم بوكس المناسبات 🎁</a></li>
+          <li><a href="#location">موقع الفرع</a></li>
         </ul>
       </nav>
 
-      <!-- إجراءات الهيدر -->
       <div class="nav-actions">
-        <!-- زر فتح السلة -->
-        <button class="cart-trigger-btn" id="cartTriggerBtn" aria-label="سلة الطلبات">
+        <!-- زر السلة -->
+        <button class="cart-icon-btn" id="cartBtn" aria-label="سلة المشتريات">
           <i class="fa-solid fa-basket-shopping"></i>
-          <span class="cart-badge" style="display: none;">0</span>
+          <span class="cart-counter" id="cartCounter" style="display: none;">0</span>
         </button>
 
-        <!-- زر الطلب المباشر واتساب -->
-        <a href="#menu" class="btn-primary">
-          <i class="fa-solid fa-utensils"></i> اطلب الآن
+        <a href="#menu" class="btn-artisanal">
+          <i class="fa-solid fa-utensils"></i> تصفح منيو اليوم
         </a>
-
-        <!-- زر الموبايل منيو -->
-        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="فتح القائمة" onclick="alert('القائمة متاحة عبر التمرير السلس للأقسام')">
-          <i class="fa-solid fa-bars"></i>
-        </button>
       </div>
     </div>
   </header>
 
-  <!-- القسم الرئيسي (Hero Section) -->
-  <section class="hero-section" id="home">
-    <div class="container hero-grid">
-      <!-- النصوص والدعوة للتفاعل -->
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="pulse-dot"></span>
-          <span>خبز طازج خارج للتو من الفرن 🥐</span>
-        </div>
-        
-        <h2 class="hero-title">
-          عالم من المخبوزات <br>
-          <span class="highlight">والحلويات الفرنسية الفاخرة</span>
+  <!-- القسم الرئيسي (Hero Section) مع مسرح 3D تفاعلي حقيقي -->
+  <section class="hero-editorial" id="home">
+    <div class="container hero-editorial-grid">
+      <div class="hero-text-side">
+        <span class="hero-handwritten-tag">نخبز بشغف منذ فجر اليوم 🥐</span>
+        <h2 class="hero-heading">
+          فنون الباتيسري الفرنسية <br>
+          بلمسة <em>حرفية أصيلة</em>
         </h2>
-        
-        <p class="hero-desc js-brand-slogan">
-          نخبز يومياً منذ فجر اليوم بحب وإتقان، باستخدام أنقى زبدة فرنسية طبيعية ودقيق مخمر ببطء لـ 36 ساعة لتتذوق قرمشة باريسية حقيقية في كل قضمة.
+        <p class="hero-lead">
+          نجمع بين زبدة بريتاني النقية، والدقيق المخمر ببطء على الطريقة الباريسية الكلاسيكية، لنقدم لك قرمشة ذهبية ورائحة زكية تملأ حواسك في كل صباح.
         </p>
 
-        <div class="hero-cta-group">
-          <a href="#menu" class="btn-primary" style="padding: 14px 28px; font-size: 1.05rem;">
-            <i class="fa-solid fa-bread-slice"></i> تصفح منيو اليوم
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#menu" class="btn-artisanal" style="padding: 14px 30px; font-size: 1rem;">
+            <i class="fa-solid fa-bread-slice"></i> اطلب من قائمة اليوم
           </a>
-          <a href="javascript:void(0)" class="btn-outline js-whatsapp-link" style="padding: 14px 28px;">
-            <i class="fa-brands fa-whatsapp"></i> طلب مباشر سريع
+          <a href="#boxBuilder" class="btn-artisanal" style="background: rgba(230, 183, 108, 0.12); border: 1px solid var(--border-gold); color: var(--gold-leaf); padding: 14px 26px;">
+            <i class="fa-solid fa-gift"></i> خصص بوكس الجمعات
           </a>
         </div>
 
-        <div class="hero-stats">
-          <div class="stat-item">
-            <h4 class="js-brand-rating">4.9 ⭐</h4>
-            <p>تقييم الجودة (<span class="js-brand-reviews">1450+ تقييم</span>)</p>
+        <div class="hero-badge-row">
+          <div class="metric-pill">
+            <strong>4.9 ⭐</strong>
+            <span>تقييم الزوار الحقيقيين</span>
           </div>
-          <div class="stat-item">
-            <h4>100%</h4>
-            <p>زبدة بريتاني طبيعية</p>
+          <div class="metric-pill">
+            <strong>100%</strong>
+            <span>زبدة فرنسية طبيعية Pur Beurre</span>
           </div>
-          <div class="stat-item">
-            <h4>3 دفعات</h4>
-            <p>خبز طازج يومياً</p>
+          <div class="metric-pill">
+            <strong>3 دفعات</strong>
+            <span>خبز طازج خارج من الفرن يومياً</span>
           </div>
         </div>
       </div>
 
-      <!-- الصورة الاستعراضية مع البادجات الطافية -->
-      <div class="hero-visual">
-        <div class="hero-image-wrap">
-          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1000&q=85" alt="كرواسون لو دوريه الملكي">
-        </div>
-
-        <!-- كارت عائم 1 -->
-        <div class="floating-pill top-right">
-          <div class="icon">🥐</div>
-          <div class="text">
-            <strong>كرواسون Pur Beurre</strong>
-            <span>مخبوز بالزبدة الفرنسية 100%</span>
+      <!-- عرض بصري تفاعلي ثلاثي الأبعاد واقعي وفخم (3D Parallax Visual Stage) -->
+      <div class="hero-3d-visual-wrap" id="heroVisualStage">
+        <div class="parallax-card" id="parallaxCard">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=90" alt="كرواسون لو دوريه الحرفي الفاخر" class="main-croissant-img">
+          
+          <!-- طبقة لمعان ضوئي ديناميكي تتتبع حركة الماوس -->
+          <div class="light-sheen" id="cardSheen"></div>
+          
+          <!-- بادج عائم ثلاثي الأبعاد 1: ختم الزبدة الفرنسية -->
+          <div class="floating-badge badge-top-right">
+            <div class="badge-icon">🥐</div>
+            <div class="badge-text">
+              <strong>Pur Beurre 100%</strong>
+              <span>زبدة بريتاني فرنسية طبيعية</span>
+            </div>
           </div>
-        </div>
 
-        <!-- كارت عائم 2 -->
-        <div class="floating-pill bottom-left">
-          <div class="icon">🌾</div>
-          <div class="text">
-            <strong>تخمير بطيء 36 ساعة</strong>
-            <span>خفيف على المعدة وسهل الهضم</span>
+          <!-- بادج عائم ثلاثي الأبعاد 2: وقت الخبز الطازج -->
+          <div class="floating-badge badge-bottom-left">
+            <div class="badge-icon">🌾</div>
+            <div class="badge-text">
+              <strong>تخمير بارد 36 ساعة</strong>
+              <span>هش وخفيف على المعدة</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- قسم المميزات / لماذا نحن (Features) -->
-  <section class="features-section" id="features">
-    <div class="container">
-      <div class="features-grid" id="featuresGrid">
-        <!-- يتم رسمها عبر JavaScript من BAKERY_CONFIG -->
+  <!-- شريط المكونات والنكهات الحسية -->
+  <div class="sensory-bar">
+    <div class="container sensory-flex">
+      <div class="sensory-item">
+        <i class="fa-solid fa-seedling"></i>
+        <div>
+          <h4>زبدة بريتاني ومكونات طبيعية</h4>
+          <p>خالية 100% من الزيوت المهدرجة والمحسنات الصناعية</p>
+        </div>
       </div>
+      <div class="sensory-item">
+        <i class="fa-solid fa-temperature-half"></i>
+        <div>
+          <h4>تخمير بارد 36 ساعة</h4>
+          <p>عجينة خفيفة وهشة وسهلة الهضم بمذاق حمضي خفيف</p>
+        </div>
+      </div>
+      <div class="sensory-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div>
+          <h4>توصيل مبرد ومحكم الحرارة</h4>
+          <p>يصلك الكرواسون والتورت بنفس قرمشة ونضارة المتجر</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- قائمة المنتجات مع كروت 3D Tilt تفاعلية -->
+  <section class="menu-sec" id="menu">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">تشكيلة المخبوزات والحلويات</span>
+        <h2 class="sec-title">تذوق الفخامة في كل قضمة</h2>
+      </div>
+
+      <!-- فلاتر الأقسام -->
+      <div class="cat-filters" id="categoryFilters"></div>
+
+      <!-- شبكة الكروت ثلاثية الأبعاد (3D Tilt Cards) -->
+      <div class="products-3d-grid" id="products3dGrid"></div>
     </div>
   </section>
 
-  <!-- قسم المنيو والكتالوج التفاعلي (Menu Catalog) -->
-  <section class="menu-section" id="menu">
+  <!-- باني بوكس المناسبات التفاعلي (Interactive Box Builder) -->
+  <section class="box-builder-sec" id="boxBuilder">
     <div class="container">
-      <div class="section-head">
-        <span class="section-subtitle">تشكيلة المخبوزات والحلويات</span>
-        <h2 class="section-title">منيو طازج صُنع لإسعاد حواسك</h2>
-        <p class="section-desc">اختر ما تفضله من الأصناف، أضفها لسلة الطلب، وأرسل طلبك مباشرة إلى واتساب الفرع بضغطة زر واحدة!</p>
+      <div class="sec-head" style="margin-bottom: 30px;">
+        <span class="sec-tag">تجربة تفاعلية مخصصة</span>
+        <h2 class="sec-title">جهّز بوكس الجمعات على ذوقك</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">
+          اختر 8 قطع من الميني كرواسون والحلويات المفضلة لديك، وشاهد البوكس يمتلئ أمامك خطوة بخطوة ثم اطلبه مباشرة عبر واتساب!
+        </p>
       </div>
 
-      <!-- أزرار تبويب الأقسام -->
-      <div class="category-tabs-wrap" id="categoryTabs">
-        <!-- يتم ملؤها ديناميكياً -->
-      </div>
+      <div class="builder-wrap">
+        <!-- الخيارات المتاحة للإضافة -->
+        <div>
+          <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 16px;">
+            <i class="fa-solid fa-plus-circle" style="color: var(--gold-leaf); margin-left: 8px;"></i> اختر القطع لإضافتها للبوكس:
+          </h3>
+          <div class="item-pickers-list" id="boxPickersList"></div>
+        </div>
 
-      <!-- شبكة المنتجات -->
-      <div class="products-grid" id="productsGrid">
-        <!-- يتم ملؤها ديناميكياً -->
-      </div>
-    </div>
-  </section>
-
-  <!-- قسم بوكسات الجمعات والمناسبات (Special Promo Banner) -->
-  <section class="special-promo-section" id="special">
-    <div class="container">
-      <div class="promo-banner">
-        <div class="promo-content">
-          <span class="promo-tag">خيار الشركات والجمعات العائلية 🎁</span>
-          <h2 class="promo-title">بوكسات الفطور والاجتماعات الفاخرة</h2>
-          <p class="promo-text">
-            هل تخطط لإفطار عمل راقٍ أو لجمعة عائلية في نهاية الأسبوع؟ صممنا لكم بوكسات متكاملة تضم تشكيلة ميني كرواسون، ميني تارت، وحلويات فرنسية في تغليف أنيق وجاهز للتقديم مباشرة.
-          </p>
-
-          <ul class="promo-features">
-            <li><i class="fa-solid fa-circle-check"></i> تشكيلة من 16 إلى 32 قطعة ميني بحشوات مالحة وحلوة.</li>
-            <li><i class="fa-solid fa-circle-check"></i> كروت مخصصة لإهداء وتنسيق مناسبات الشركات وأعياد الميلاد.</li>
-            <li><i class="fa-solid fa-circle-check"></i> توصيل في الموعد المحدد بدرجة حرارة مثالية جاهزة للتناول.</li>
-          </ul>
-
-          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <button class="btn-primary" onclick="addToCart('prod-10')">
-              <i class="fa-solid fa-cart-plus"></i> اطلب بوكس الجمعات (520 ج.م)
+        <!-- معاينة البوكس التفاعلية الممتلئة -->
+        <div class="box-preview-container">
+          <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <strong style="color: #fff; font-size: 1.1rem;">🎁 بوكس التقديم الفاخر</strong>
+            <button onclick="clearCustomBox()" style="color: #ef4444; background: none; border: none; font-size: 0.82rem; cursor: pointer;">
+              <i class="fa-solid fa-rotate-left"></i> تفريغ البوكس
             </button>
-            <a href="javascript:void(0)" class="btn-outline js-whatsapp-link">
-              <i class="fa-brands fa-whatsapp"></i> تخصيص بوكس لشركتك
-            </a>
           </div>
-        </div>
 
-        <div class="promo-image-box">
-          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&w=800&q=80" alt="بوكس الجمعات الفاخر">
+          <!-- الخانات الـ 8 للقطع -->
+          <div class="box-slots-grid" id="boxSlotsGrid"></div>
+
+          <div style="margin-top: 25px; width: 100%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-antique); padding-top: 16px;">
+            <div>
+              <span style="font-size: 0.85rem; color: var(--text-dim); display: block;">الحالة: <strong id="boxItemsCount" style="color: var(--gold-leaf);">0 من 8 قطع</strong></span>
+              <span style="font-size: 1.3rem; font-weight: 900; color: #fff;" id="boxTotalPrice">0 ج.م</span>
+            </div>
+            <button class="btn-artisanal" onclick="orderCustomBoxViaWhatsApp()">
+              <i class="fa-brands fa-whatsapp"></i> طلب البوكس عبر واتساب
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- قسم آراء وتقييمات العملاء (Testimonials) -->
-  <section class="testimonials-section" id="testimonials">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-subtitle">تجارب حقيقية</span>
-        <h2 class="section-title">ماذا يقول عشاق مخبوزاتنا؟</h2>
-        <p class="section-desc">فخورون بثقة أكثر من 1,450 عميل في جودة منتجاتنا وخدمتنا اليومية.</p>
-      </div>
-
-      <div class="testimonials-grid" id="testimonialsGrid">
-        <!-- يتم رسمها ديناميكياً -->
-      </div>
-    </div>
-  </section>
-
-  <!-- قسم الفروع، الموقع، ومواعيد العمل (Location & Hours) -->
-  <section class="location-section" id="location">
-    <div class="container">
-      <div class="location-grid">
-        <div class="location-info">
-          <span class="section-subtitle">تفضل بزيارتنا</span>
-          <h2 class="section-title" style="font-size: 2rem; margin-bottom: 12px;">نرحب بكم يومياً في فرعنا</h2>
-          <p class="section-desc">عيشوا تجربة رائحة الخبز الفرنسي الطازج واستمتعوا بكوب قهوة مختصة في جلستنا الهادئة.</p>
-
-          <div class="info-cards-list">
-            <div class="info-row">
-              <div class="info-icon">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div class="info-text">
-                <strong>العنوان والفرع الرئيسي</strong>
-                <p class="js-contact-address">شارع النزهة، مصر الجديدة، القاهرة</p>
-              </div>
-            </div>
-
-            <div class="info-row">
-              <div class="info-icon">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div class="info-text">
-                <strong>ساعات العمل والاستقبال</strong>
-                <p class="js-contact-hours">يومياً من 7:00 صباحاً حتى 11:30 مساءً</p>
-              </div>
-            </div>
-
-            <div class="info-row">
-              <div class="info-icon">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div class="info-text">
-                <strong>الهاتف والاستفسارات</strong>
-                <p><a href="tel:+201000000000" class="js-contact-phone">+20 100 000 0000</a></p>
-              </div>
-            </div>
-
-            <div class="info-row">
-              <div class="info-icon">
-                <i class="fa-brands fa-whatsapp"></i>
-              </div>
-              <div class="info-text">
-                <strong>خدمة الطلبات السريعة والتوصيل</strong>
-                <p><a href="javascript:void(0)" class="js-whatsapp-link" style="color: #25d366; font-weight: 700;">دردشة مباشرة عبر واتساب</a></p>
-              </div>
-            </div>
+  <!-- موقع الفرع وساعات العمل -->
+  <section class="container" id="location" style="padding: 70px 24px;">
+    <div style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 28px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center;">
+      <div>
+        <span class="sec-tag">زيارة المتجر</span>
+        <h3 style="font-size: 2.2rem; color: #fff; margin: 8px 0 16px; font-family: var(--font-serif);">نرحب بكم في فرعنا</h3>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 24px;">
+          استمتعوا بعبق المخبوزات الفرنسية الطازجة وجلسات الصباح الهادئة مع فنجان قهوة مختصة في قلب مصر الجديدة.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem;">
+          <div style="display: flex; gap: 10px; color: var(--gold-leaf); align-items: center;">
+            <i class="fa-solid fa-location-dot"></i>
+            <span style="color: #fff;">شارع النزهة، مصر الجديدة، القاهرة (بجوار كافيه دي باريس)</span>
+          </div>
+          <div style="display: flex; gap: 10px; color: var(--gold-leaf); align-items: center;">
+            <i class="fa-solid fa-clock"></i>
+            <span style="color: #fff;">يومياً من 7:00 صباحاً حتى 11:30 مساءً</span>
+          </div>
+          <div style="display: flex; gap: 10px; color: var(--gold-leaf); align-items: center;">
+            <i class="fa-brands fa-whatsapp"></i>
+            <a href="https://wa.me/201146945584" target="_blank" style="color: #25d366; font-weight: 700; text-decoration: none;">تواصل مباشر وطلبات: 01146945584</a>
           </div>
         </div>
-
-        <!-- خريطة توضيحية -->
-        <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110499.76785121287!2d31.3259837!3d30.0886675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145815dcc3e4e599%3A0x6c67a22e4d9160ae!2sHeliopolis%2C%20Al%20Matariyyah%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg" 
-            loading="lazy" 
-            title="موقع مخبز لو دوريه">
-          </iframe>
-        </div>
+      </div>
+      <div style="border-radius: 20px; overflow: hidden; height: 320px; border: 1px solid var(--border-antique);">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110499.76785121287!2d31.3259837!3d30.0886675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145815dcc3e4e599%3A0x6c67a22e4d9160ae!2sHeliopolis%2C%20Cairo!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg" 
+          width="100%" height="100%" style="border:0; filter: grayscale(90%) invert(90%);" allowfullscreen="" loading="lazy">
+        </iframe>
       </div>
     </div>
   </section>
 
-  <!-- الفوتر (Footer) -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="brand-logo" style="margin-bottom: 16px;">
-            <div class="logo-symbol">
-              <i class="fa-solid fa-wheat-awn"></i>
-            </div>
-            <div class="brand-text">
-              <h2 style="font-size: 1.2rem; color: #fff;" class="js-brand-name">لو دوريه باتيسري</h2>
-              <span style="font-size: 0.72rem; color: var(--primary-gold);">ARTISAN BAKERY</span>
-            </div>
-          </div>
-          <p>
-            نجمع بين شغف التقاليد الفرنسية في الخبز الحرفي وبين أحدث تقنيات الضيافة لنقدم لكم تجربة لا تُنسى في كل زيارة وكل قطعة تطلبونها.
-          </p>
-          <div class="social-links">
-            <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="javascript:void(0)" class="social-btn js-whatsapp-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>روابط سريعة</h4>
-          <ul class="footer-links">
-            <li><a href="#home">الصفحة الرئيسية</a></li>
-            <li><a href="#menu">منيو الكرواسون والمخبوزات</a></li>
-            <li><a href="#special">بوكسات الجمعات والشركات</a></li>
-            <li><a href="#features">معايير الجودة الفرنسية</a></li>
-            <li><a href="#location">أوقات العمل والفروع</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>الأصناف الأكثر طلباً</h4>
-          <ul class="footer-links">
-            <li><a href="#menu">كرواسون الزبدة الملكي</a></li>
-            <li><a href="#menu">كرواسون الفستق والكريمة</a></li>
-            <li><a href="#menu">تورتة شوكولاتة الترافل</a></li>
-            <li><a href="#menu">خبز الساوردو الحرفي</a></li>
-            <li><a href="#menu">علبة ماكرون باريس الملكية</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>معلومات القالب</h4>
-          <div class="template-badge">
-            <strong>قالب ويب جاهز للتخصيص ⚡</strong>
-            <p style="margin-bottom: 8px;">مبني خصيصاً للمخابز، الباتيسري، ومحلات الحلويات لتمكينهم من استلام الطلبات عبر واتساب بدون عمولات تطبيقات التوصيل.</p>
-            <span style="font-size: 0.75rem; color: var(--primary-gold);">من تصميم وتطوير: NOVA Digital</span>
-          </div>
-        </div>
+  <!-- الفوتر -->
+  <footer style="background: #0a0705; border-top: 1px solid var(--border-antique); padding: 50px 0 25px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <h4 style="color: #fff; font-family: var(--font-serif); font-size: 1.25rem;">لو دوريه باتيسري ومخبز فاخر</h4>
+        <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 4px;">حرفية الخبز الفرنسي الأصيل منذ 2018.</p>
       </div>
-
-      <div class="footer-bottom">
-        <div>
-          جميع الحقوق محفوظة &copy; <span id="currentYear">2026</span> <strong class="js-brand-name">لو دوريه باتيسري</strong>.
-        </div>
-        <div>
-          تصميم وبرمجة متقدمة بواسطة <a href="#">NOVA Digital Solutions</a>
-        </div>
+      <div style="font-size: 0.85rem; color: var(--text-dim);">
+        تصميم وتطوير خاص بوكالة <strong style="color: var(--gold-leaf);">NOVA Digital</strong> &copy; 2026
       </div>
     </div>
   </footer>
 
-  <!-- السلة المنزلقة وطلب الواتساب (Slide-out Cart Drawer) -->
-  <div class="cart-drawer-overlay" id="cartDrawerOverlay">
-    <aside class="cart-drawer" aria-label="سلة المشتريات">
-      <div class="cart-header">
-        <h3><i class="fa-solid fa-basket-shopping" style="color: var(--primary-gold);"></i> سلة طلبك</h3>
-        <button class="close-cart-btn" id="closeCartBtn" aria-label="إغلاق السلة">
+  <!-- السلة المنزلقة -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-panel">
+      <div class="cart-head">
+        <h3 style="color: #fff; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-basket-shopping" style="color: var(--gold-leaf);"></i> سلة طلباتك
+        </h3>
+        <button id="closeCartBtn" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- قائمة الأصناف في السلة -->
-      <div class="cart-items-body" id="cartItemsList">
-        <!-- يتم رسمها ديناميكياً بواسطة JavaScript -->
-      </div>
+      <div class="cart-items-wrap" id="cartItemsList"></div>
 
-      <!-- تفاصيل الإجمالي وإنهاء الطلب -->
-      <div class="cart-footer">
-        <div class="cart-summary-line">
-          <span>المجموع الفرعي:</span>
-          <span id="cartSubtotal">0 ج.م</span>
-        </div>
-        <div class="cart-summary-line">
-          <span>التوصيل:</span>
-          <span id="cartDelivery">0 ج.م</span>
-        </div>
-        <div class="cart-summary-total">
-          <span>الإجمالي النهائي:</span>
-          <span id="cartTotal">0 ج.م</span>
+      <div class="cart-foot">
+        <div style="display: flex; justify-content: space-between; color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 16px;">
+          <span>الإجمالي:</span>
+          <span id="cartTotal" style="color: var(--gold-leaf);">0 ج.م</span>
         </div>
 
-        <!-- حقول بيانات العميل للتوصيل -->
-        <div class="order-options">
-          <select id="orderMethod">
-            <option value="توصيل">🛵 توصيل للمنزل أو العمل</option>
-            <option value="استلام من الفرع">🏪 استلام مباشر من الفرع</option>
-          </select>
-          <input type="text" id="customerName" placeholder="الاسم الكريم (مطلوب)" required>
-          <input type="text" id="customerAddress" placeholder="العنوان بالتفصيل (اسم الشارع، العمارة، الشقة)">
-          <input type="text" id="orderNotes" placeholder="ملاحظات خاصة للطلب (اختياري)">
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
+          <input type="text" id="clientNameInput" placeholder="الاسم الكريم" style="background: #1f1610; border: 1px solid var(--border-antique); color: #fff; padding: 10px 14px; border-radius: 8px; font-family: inherit;">
+          <input type="text" id="clientAddressInput" placeholder="العنوان بالتفصيل" style="background: #1f1610; border: 1px solid var(--border-antique); color: #fff; padding: 10px 14px; border-radius: 8px; font-family: inherit;">
         </div>
 
-        <button class="btn-whatsapp-order" onclick="checkoutViaWhatsApp()">
+        <button class="btn-checkout-wa" onclick="checkoutWhatsApp()">
           <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> تأكيد الطلب عبر واتساب
         </button>
-      </div>
-    </aside>
-  </div>
-
-  <!-- مودال المعاينة السريعة للمنتج (Quick View Modal) -->
-  <div class="modal-overlay" id="quickViewModal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeQuickView()" aria-label="إغلاق">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <img src="" id="modalImg" class="modal-img" alt="صورة المنتج">
-      <div class="modal-body">
-        <div>
-          <h3 id="modalTitle" style="font-size: 1.35rem; color: var(--accent-cream); margin-bottom: 10px;"></h3>
-          <p id="modalDesc" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;"></p>
-          <div id="modalAllergens" style="margin-bottom: 20px;"></div>
-        </div>
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-            <span style="font-size: 0.9rem; color: var(--text-muted);">السعر:</span>
-            <span id="modalPrice" style="font-size: 1.4rem; font-weight: 800; color: var(--primary-gold);"></span>
-          </div>
-          <button class="btn-primary" id="modalAddBtn" style="width: 100%; justify-content: center;">
-            <i class="fa-solid fa-basket-shopping"></i> أضف للطلب
-          </button>
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- زر واتساب طافي للاستفسارات السريعة -->
-  <a href="javascript:void(0)" class="floating-whatsapp-btn js-whatsapp-link" aria-label="تواصل واتساب مباشر">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- JavaScript Scripts -->
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
-  <script>
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
